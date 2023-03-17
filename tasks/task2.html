@@ -1,0 +1,78 @@
+<html>
+<head>
+    <title>Candy Riddles</title>
+</head>
+<body>
+<script>
+    var solve = function (field) {
+
+    };
+
+    var testing = function () {
+        var tests = [{
+            field: [
+                "aab",
+                "bba"
+            ],
+            answer: [{row: 0, col: 2}, {row: 1, col: 2}]
+        },
+            {
+                field: [
+                    "abc",
+                    "def"
+                ],
+                answer: -1
+            },
+            {
+                field: [
+                    "abcdefab",
+                    "fedcbafe",
+                    "abcdefab",
+                    "fedcbafe",
+                    "abcdefab",
+                    "fedcbafe",
+                    "abcdefab",
+                    "fedcbafe"
+                ],
+                answer: [{row: 1, col: 2}, {row: 1, col: 3}]
+            }, {
+                field: [
+                    "aabbcc",
+                    "ddeeff",
+                    "aabbcc",
+                    "ddeeff"
+                ],
+                answer: -1
+            }, {
+                field: [
+                    "aabbcca",
+                    "ddeeffb",
+                    "aabbccd",
+                    "ddecffe"
+                ],
+                answer: [{row: 2, col: 3}, {row: 3, col: 3}]
+            }
+        ];
+
+        for (var i = 0; i < tests.length; i++) {
+            var result;
+            try {
+                result = solve(tests[i].field);
+            } catch (e) {
+                console.error(e);
+                document.getElementById('result').innerHTML = "Test " + (i + 1) + "<br/>" + e;
+                return;
+            }
+            if (JSON.stringify(result) !== JSON.stringify(tests[i].answer)) {
+                document.getElementById('result').innerHTML = "Test " + (i + 1) + " wrong answer<br/>Result: " + result + "<br/>Expected: " + tests[i].answer;
+                return;
+            }
+        }
+        document.getElementById('result').innerHTML = "Accepted!";
+    };
+</script>
+<button onclick="testing()">Testing</button>
+<br/><br/>
+<div id="result"></div>
+</body>
+</html>

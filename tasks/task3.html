@@ -1,0 +1,60 @@
+<html>
+<head>
+    <title>Kings and Queens</title>
+</head>
+<body>
+<script>
+    var solve = function (card1, card2) {
+
+    };
+
+    var testing = function () {
+        var tests = [{
+            card1: { x: 0, y: 0, rotation: 0 },
+            card2: { x: 500, y: 0, rotation: 0 },
+            answer: "no"
+        },
+            {
+                card1: { x: 0, y: 0, rotation: 90 },
+                card2: { x: 100, y: 0, rotation: 0 },
+                answer: "yes"
+            },
+            {
+                card1: { x: -88, y: 40, rotation: 0 },
+                card2: { x: 16, y: -8, rotation: 0 },
+                answer: "yes"
+            },
+            {
+                card1: { x: 48, y: 104, rotation: 65 },
+                card2: { x: -88, y: 40, rotation: -25 },
+                answer: "no"
+            },
+            {
+                card1: { x: -200, y: 88, rotation: -30 },
+                card2: { x: -80, y: 16, rotation: -30 },
+                answer: "yes"
+            }
+        ];
+
+        for (var i = 0; i < tests.length; i++) {
+            var result;
+            try {
+                result = solve(tests[i].card1, tests[i].card2);
+            } catch (e) {
+                console.error(e);
+                document.getElementById('result').innerHTML = "Test " + (i + 1) + "<br/>" + e;
+                return;
+            }
+            if (JSON.stringify(result) !== JSON.stringify(tests[i].answer)) {
+                document.getElementById('result').innerHTML = "Test " + (i + 1) + " wrong answer<br/>Result: " + result + "<br/>Expected: " + tests[i].answer;
+                return;
+            }
+        }
+        document.getElementById('result').innerHTML = "Accepted!";
+    };
+</script>
+<button onclick="testing()">Testing</button>
+<br/><br/>
+<div id="result"></div>
+</body>
+</html>

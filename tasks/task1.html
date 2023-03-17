@@ -1,0 +1,58 @@
+<html>
+<head>
+    <title>Word Sauce</title>
+</head>
+<body>
+<script src="en.js"></script>
+<script>
+    var solve = function (word, minLength) {
+        // Функция должна вернуть массив слов
+    };
+
+    var testing = function () {
+        var tests = [{
+            word: "neo",
+            minLength: 2,
+            answer: ["no", "on", "one"]
+        },
+            {
+                word: "ucrsh",
+                minLength: 4,
+                answer: ["rush", "such", "crush"]
+            },
+            {
+                word: "rfyia",
+                minLength: 3,
+                answer: ["air", "far", "fry", "ray", "airy", "fair", "fairy"]
+            }, {
+                word: "dpuno",
+                minLength: 3,
+                answer: ["duo", "nod", "pond", "undo", "upon", "pound"]
+            }, {
+                word: "moilcpse",
+                minLength: 6,
+                answer: ["copies", "impose", "police", "simple", "compile", "complies"]
+            }];
+
+        for (var i = 0; i < tests.length; i++) {
+            var result;
+            try {
+                result = solve(tests[i].word, tests[i].minLength);
+            } catch (e) {
+                console.error(e);
+                document.getElementById('result').innerHTML = "Test " + (i + 1) + "<br/>" + e;
+                return;
+            }
+            if (JSON.stringify(result) !== JSON.stringify(tests[i].answer)) {
+                document.getElementById('result').innerHTML = "Test " + (i + 1) + " wrong answer<br/>Result: " + result + "<br/>Expected: " + tests[i].answer;
+                return;
+            }
+        }
+        document.getElementById('result').innerHTML = "Accepted!";
+    };
+</script>
+<button onclick="testing()">Testing</button>
+<br/><br/>
+<div id="result"></div>
+</body>
+</html>
